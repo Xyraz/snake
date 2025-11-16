@@ -2,6 +2,8 @@ import pygame,sys
 
 pygame.init()
 
+GREEN = (173,204,96)
+DARK_GREEN (43,51,24)
 
 screen = pygame.display.set_mode(((750,750)))
 
@@ -14,5 +16,7 @@ while True:
             pygame.quit()
             sys.exit()
 
+        screen.fill(green)
         pygame.display.update()
         clock.tick(60)
+        
