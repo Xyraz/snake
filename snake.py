@@ -36,6 +36,7 @@ clock =  pygame.time.Clock()
 
 
 food = Food()
+snake = Snake()
 food_surface = pygame.image.load("graphics/food.png")
 
 while True:
@@ -47,6 +48,7 @@ while True:
         screen.fill(GREEN)
 
         food.draw()
+        snake.draw()
 
         pygame.display.update()
         clock.tick(60)
