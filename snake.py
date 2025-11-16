@@ -1,4 +1,4 @@
-import pygame,sys
+import pygame, sys
 from pygame.math import Vector2
 pygame.init()
 
@@ -12,11 +12,19 @@ class Food:
     def __init__(self):
         self.position =  Vector2(5,6)
 
+    def draw(self):
+        food_rect = pygame.Rect(self.position.x*cell_size, self.position.y*cell_size, cell_size,cell_size)
+        screen.blit(food_surface, food_rect)
+
 
 screen = pygame.display.set_mode(((cell_size*number_of_cells, cell_size*number_of_cells)))
 
 pygame.display.set_caption("retro snake")
 clock =  pygame.time.Clock()
+
+
+food = Food()
+food_surface = pygame.image.load("graphics/food.png")
 
 while True:
     for event in pygame.event.get():
@@ -25,8 +33,12 @@ while True:
             sys.exit()
 
         screen.fill(GREEN)
+
+        food.draw()
+
         pygame.display.update()
         clock.tick(60)
+        
 
 
 
