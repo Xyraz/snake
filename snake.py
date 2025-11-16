@@ -35,9 +35,10 @@ class Snake:
         //body from snake updated
     def update(self)
         self.body = self.body[:-1]
-
-
+        self.body.insert(0, self.body[0]+ self.direction)
         
+
+
 screen = pygame.display.set_mode(((cell_size*number_of_cells, cell_size*number_of_cells)))
 
 pygame.display.set_caption("retro snake")
