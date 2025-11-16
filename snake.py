@@ -22,6 +22,12 @@ class Food:
         position = Vector2(x,y)
         return position
 
+class Snake:
+    def __init__(self):
+        self.body = [Vector2(6,9),Vector2(5,9),Vector2(4,9)]
+        segment_rect = (segment.x*cell_size,segment.y*cell_size,cell_size,cell_size)
+        pygame.draw.rect(screen, DARK_GREEN,segment_rect)
+
 
 screen = pygame.display.set_mode(((cell_size*number_of_cells, cell_size*number_of_cells)))
 
