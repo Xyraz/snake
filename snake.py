@@ -21,7 +21,7 @@ class Food:
         y = random.randint(0, number_of_cells -1)
         position = Vector2(x,y)
         return position
-testt
+testaccountnaam
 class Snake:
     def __init__(self):
         self.body = [Vector2(6,9),Vector2(5,9),Vector2(4,9)]
