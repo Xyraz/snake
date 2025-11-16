@@ -47,6 +47,12 @@ class Game:
 
     def update(self):
         self.snake.update()
+        self.check_collisions_with_food()
+
+    def check_collisions_with_food(self):
+        if self.snake.body[0] == self.food.position:
+            self.food.position = self.food.generate_random_pos()
+        
         
 
 screen = pygame.display.set_mode(((cell_size*number_of_cells, cell_size*number_of_cells)))
@@ -69,25 +75,18 @@ while True:
             sys.exit()
 
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP and game.direction != Vector2(0,1):
-                game.direction = Vector2(0, -1)
-            if event.key == pygame.K_DOWN and game.direction != Vector2(0,-1):
-                game.direction = Vector2(0,1)
-            if event.key == pygame.K_LEFT and game.direction != Vector2(1,0):
-                game.direction = Vector2(-1,0)
-            if event.key == pygame.K_RIGHT and game.direction != Vector2(-1,0):
-                game.direction = Vector2(1,0)
-
-
-
-
-            
-
+            if event.key == pygame.K_UP and game.snake.direction != Vector2(0,1):
+                game.snake.direction = Vector2(0, -1)
+            if event.key == pygame.K_DOWN and game.snake.direction != Vector2(0,-1):
+                game.snake.direction = Vector2(0,1)
+            if event.key == pygame.K_LEFT and game.snake.direction != Vector2(1,0):
+                game.snake.direction = Vector2(-1,0)
+            if event.key == pygame.K_RIGHT and game.snake.direction != Vector2(-1,0):
+                game.snake.direction = Vector2(1,0)
 
 
         screen.fill(GREEN)
         game.draw()
-
         pygame.display.update()
         clock.tick(60)
         
