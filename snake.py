@@ -45,7 +45,9 @@ class Snake:
             self.add_segment = False
         else:
             self.body = self.body[:-1]
-        
+    def reset(self):
+        self.body = [Vector2(6,9),Vector2(5,9), Vector2(4,9)]
+        self.direction = Vector2(1,0)
 class Game:
     def __init__(self):
         self.snake = Snake()
@@ -70,7 +72,9 @@ class Game:
         if self.snake.body[0].y == number_of_cells or self.snake.body[0].y ==-1:
             self.game_over()
 
-
+    def game_over(self):
+        // make sure snake gets back to position
+        self.snake.reset
         
 
 screen = pygame.display.set_mode(((cell_size*number_of_cells, cell_size*number_of_cells)))
