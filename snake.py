@@ -32,6 +32,7 @@ class Snake:
     def __init__(self):
         self.body = [Vector2(6,9),Vector2(5,9),Vector2(4,9)]
         self.direction = Vector2(1,0)
+        self.add_segment = False
          
     def draw(self):
         for segment in self.body:
@@ -39,6 +40,11 @@ class Snake:
             pygame.draw.rect(screen, DARK_GREEN,segment_rect, 0,7)
 
     def update(self):
+        if self.add_segment == True :
+            self.body.insert(0,self.body[[0]+self.direction])
+            self.add_segment = False
+
+        else:
         self.body = self.body[:-1]
         self.body.insert(0, self.body[0]+ self.direction)
         
