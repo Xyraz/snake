@@ -63,7 +63,9 @@ class Game:
         if self.snake.body[0] == self.food.position:
             self.snake.add_segment = True
             self.food.position = self.food.generate_random_pos(self.snake.body)
-        
+    
+    def check_collision_with_edges(self):
+        if self.snake.body[0].x == number_of_cells or self.snake.body[0].x ==-1:
         
 
 screen = pygame.display.set_mode(((cell_size*number_of_cells, cell_size*number_of_cells)))
