@@ -40,7 +40,7 @@ class Snake:
 
     def update(self):
         new_head = self.body[0] + self.direction
-        
+        self.body.insert(0,new_head)
         if self.add_segment == True :
             self.add_segment = False
         else:
