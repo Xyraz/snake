@@ -66,6 +66,11 @@ class Game:
     
     def check_collision_with_edges(self):
         if self.snake.body[0].x == number_of_cells or self.snake.body[0].x ==-1:
+            self.game_over()
+        if self.snake.body[0].y == number_of_cells or self.snake.body[0].y ==-1:
+            self.game_over()
+
+
         
 
 screen = pygame.display.set_mode(((cell_size*number_of_cells, cell_size*number_of_cells)))
