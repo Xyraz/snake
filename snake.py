@@ -52,14 +52,17 @@ class Game:
     def __init__(self):
         self.snake = Snake()
         self.food = Food(self.snake.body)
+        self.state = "RUNNING"
 
     def draw(self):
         self.food.draw()
         self.snake.draw()
 
     def update(self):
-        self.snake.update()
-        self.check_collisions_with_food()
+        if self.state == "RUNNING":
+            self.snake.update()
+            self.check_collisions_with_food()
+            self.check_collision_with_edges()
 
     def check_collisions_with_food(self):
         if self.snake.body[0] == self.food.position:
@@ -73,8 +76,9 @@ class Game:
             self.game_over()
 
     def game_over(self):
-        self.snake.reset
-        self.food.position = self.food.generate_random_pos(self.snake.body)        
+        self.snake.reset()
+        self.food.position = self.food.generate_random_pos(self.snake.body) 
+        self.state = "RUNNING"       
 
 screen = pygame.display.set_mode(((cell_size*number_of_cells, cell_size*number_of_cells)))
 
