@@ -73,9 +73,8 @@ class Game:
             self.game_over()
 
     def game_over(self):
-        // make sure snake gets back to position
         self.snake.reset
-        
+        self.food.position = self.food.generate_random_pos(self.snake.body)        
 
 screen = pygame.display.set_mode(((cell_size*number_of_cells, cell_size*number_of_cells)))
 
