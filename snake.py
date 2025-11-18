@@ -23,7 +23,6 @@ class Food:
 
     def generate_random_pos(self,snake_body):
         position = self.generate_random_cell()
-
         while position in snake_body:
             position = self.generate_random_cell()
         return position
@@ -35,18 +34,14 @@ class Snake:
         self.add_segment = False
          
     def draw(self):
-        for segment in self.body:
-            segment_rect = (segment.x*cell_size,segment.y*cell_size,cell_size,cell_size)
-            pygame.draw.rect(screen, DARK_GREEN,segment_rect, 0,7)
+        for segment in self.body:            pygame.draw.rect(screen, DARK_GREEN,segment_rect, 0,7)
 
     def update(self):
+        self.body.insert(0,self.body[[0]+self.direction])
         if self.add_segment == True :
-            self.body.insert(0,self.body[[0]+self.direction])
             self.add_segment = False
-
         else:
-        self.body = self.body[:-1]
-        self.body.insert(0, self.body[0]+ self.direction)
+         self.body = self.body[:-1]
         
 class Game:
     def __init__(self):
